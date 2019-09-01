@@ -23,6 +23,9 @@ export class RecipeService{
   getRecipes() {
     return this.recipes.slice();
   }
+  getRecipe(index : number) {
+    return this.recipes[index];
+  }
   recipeSelected = new EventEmitter<Recipe>();
   addIngredientstoShoppingList(ingredients:Ingredient[]) {
     this.slservice.addIngredients(ingredients);
