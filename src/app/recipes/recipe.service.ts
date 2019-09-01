@@ -2,6 +2,7 @@ import { Recipe } from './recipe.model';
 import { EventEmitter, Injectable } from '@angular/core';
 import { Ingredient } from '../Shared/Ingredient.model';
 import { ShoppinglistService } from '../shopping-list/shoppinglist.service';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class RecipeService{
@@ -26,7 +27,9 @@ export class RecipeService{
   getRecipe(index : number) {
     return this.recipes[index];
   }
-  recipeSelected = new EventEmitter<Recipe>();
+  //recipeSelected = new EventEmitter<Recipe>();
+
+  //recipeSelected = new Subject<Recipe>();
   addIngredientstoShoppingList(ingredients:Ingredient[]) {
     this.slservice.addIngredients(ingredients);
   }
