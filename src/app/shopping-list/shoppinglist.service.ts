@@ -9,7 +9,7 @@ export class ShoppinglistService {
   ];
   //ingredientsChanged = new EventEmitter <Ingredient[]>();
   ingredientsChanged = new Subject <Ingredient[]>();
-
+  startedEditing = new Subject<number>();
   getIngredient() {
     return this.ingredients.slice();
   }
@@ -21,5 +21,17 @@ export class ShoppinglistService {
     this.ingredients.push(...ingredients);
     this.ingredientsChanged.next(this.ingredients.slice());
 
+  }
+  getIngredients(index: number) {
+    return this.ingredients[index];
+  }
+  updateIngredient(index: number, newingredient: Ingredient) {
+    this.ingredients[index] = newingredient;
+    this.ingredientsChanged.next(this.ingredients.slice());
+  }
+
+  deleteIngredient(index: number) {
+    this.ingredients.splice(index, 1);
+    this.ingredientsChanged.next(this.ingredients.slice());
   }
 }
